@@ -1,0 +1,86 @@
+source leaprc.protein.ff14SB 
+loadamberparams frcmod.ionsjc_tip4pew 
+source leaprc.gaff2
+loadoff  /home/marie/Desktop/newerparam-again/AKR2.lib
+loadoff  /home/marie/Desktop/newerparam-again/AKR1.lib
+loadoff  /home/marie/Desktop/newerparam-again/SS-stapled-cis/AKS1.lib
+loadoff  /home/marie/Desktop/newerparam-again/SS-stapled-cis/AKS2.lib
+loadamberparams  /home/marie/REMD/Fergus/aSyn-gaff2/extra.frcmod
+loadamberparams /home/marie/Desktop/newerparam-again/AKS-stapled-gaff2-asym/15072019.frcmod
+
+
+set default PBradii mbondi2  
+source leaprc.water.tip4pew 
+m = sequence { ACE  GLU GLY VAL VAL HIS GLY A1S ALA THR VAL A2S GLU LYS THR NHE } 
+impose m { 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 } { { "N" "CA" "C" "N" -40.0 } { "C" "N" "CA" "C" -60.0 } } 
+bond m.12.CY  m.8.CY
+ 
+relax m  
+savemol2 m peptide.mol2 1
+loadoff /home/marie/Desktop/newparam/libs/TFE20BOX.lib 
+loadamberparams /home/marie/Desktop/newparam/libs/TFE.frcmod 
+solvatebox m  TFE20BOX 10.0 iso 
+ addIons m Na+ 0 
+addIons m Cl- 0  
+saveamberparm m SS/system.wat.leap.prmtop SS/system.wat.leap.rst7 
+
+
+
+m = sequence { ACE  GLU GLY VAL VAL HIS GLY A1R ALA THR VAL A2S GLU LYS THR NHE } 
+impose m { 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 } { { "N" "CA" "C" "N" -40.0 } { "C" "N" "CA" "C" -60.0 } } 
+bond m.12.CY  m.8.CY
+ 
+relax m  
+savemol2 m peptide.mol2 1
+loadoff /home/marie/Desktop/newparam/libs/TFE20BOX.lib 
+loadamberparams /home/marie/Desktop/newparam/libs/TFE.frcmod 
+solvatebox m  TFE20BOX 10.0 iso 
+ addIons m Na+ 0 
+addIons m Cl- 0  
+saveamberparm m RS/system.wat.leap.prmtop RS/system.wat.leap.rst7 
+
+
+m = sequence { ACE  GLU GLY VAL VAL HIS GLY A1R ALA THR VAL A2R GLU LYS THR NHE } 
+impose m { 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 } { { "N" "CA" "C" "N" -40.0 } { "C" "N" "CA" "C" -60.0 } } 
+bond m.12.CY  m.8.CY
+ 
+relax m  
+savemol2 m peptide.mol2 1
+loadoff /home/marie/Desktop/newparam/libs/TFE20BOX.lib 
+loadamberparams /home/marie/Desktop/newparam/libs/TFE.frcmod 
+solvatebox m  TFE20BOX 10.0 iso 
+ addIons m Na+ 0 
+addIons m Cl- 0  
+saveamberparm m RR/system.wat.leap.prmtop RR/system.wat.leap.rst7 
+
+
+
+m = sequence { ACE  GLU GLY VAL VAL HIS GLY A1S ALA THR VAL A2R GLU LYS THR NHE } 
+impose m { 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 } { { "N" "CA" "C" "N" -40.0 } { "C" "N" "CA" "C" -60.0 } } 
+bond m.12.CY  m.8.CY
+ 
+relax m  
+savemol2 m peptide.mol2 1
+loadoff /home/marie/Desktop/newparam/libs/TFE20BOX.lib 
+loadamberparams /home/marie/Desktop/newparam/libs/TFE.frcmod 
+solvatebox m  TFE20BOX 10.0 iso 
+ addIons m Na+ 0 
+addIons m Cl- 0  
+saveamberparm m SR/system.wat.leap.prmtop SR/system.wat.leap.rst7 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
