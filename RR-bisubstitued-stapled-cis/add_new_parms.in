@@ -1,0 +1,9 @@
+source leaprc.protein.ff14SB 
+source leaprc.gaff2 
+loadAmberParams gaff2.frcmod 
+loadAmberParams amber.frcmod 
+loadAmberParams CHI1.frcmod 
+loadAmberParams CHI2.frcmod 
+new = loadmol2 newcharges.mol2 
+ saveAmberParm  new  newtopol.prmtop new.inpcrd
+ quit

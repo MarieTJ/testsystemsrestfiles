@@ -1,0 +1,60 @@
+loadAmberParams parmchk2_all.frcmod  
+source leaprc.protein.ff14SB 
+BS5 = loadmol2 newcharges.mol2 
+remove BS5 BS5.1.1
+remove BS5 BS5.1.2
+remove BS5 BS5.1.12
+remove BS5 BS5.1.13
+remove BS5 BS5.1.14
+remove BS5 BS5.1.15
+remove BS5 BS5.1.16
+remove BS5 BS5.1.17
+remove BS5 BS5.1.18
+remove BS5 BS5.1.19
+remove BS5 BS5.1.20
+remove BS5 BS5.1.21
+remove BS5 BS5.1.22
+remove BS5 BS5.1.23
+remove BS5 BS5.1.24
+remove BS5 BS5.1.26
+remove BS5 BS5.1.27
+remove BS5 BS5.1.28
+remove BS5 BS5.1.29
+remove BS5 BS5.1.30
+remove BS5 BS5.1.31
+remove BS5 BS5.1.32
+remove BS5 BS5.1.44
+remove BS5 BS5.1.45
+remove BS5 BS5.1.46
+remove BS5 BS5.1.47
+remove BS5 BS5.1.48
+remove BS5 BS5.1.49
+remove BS5 BS5.1.50
+remove BS5 BS5.1.51
+remove BS5 BS5.1.52
+remove BS5 BS5.1.53
+remove BS5 BS5.1.54
+remove BS5 BS5.1.55
+remove BS5 BS5.1.56
+remove BS5 BS5.1.57
+remove BS5 BS5.1.58
+remove BS5 BS5.1.59
+remove BS5 BS5.1.60
+remove BS5 BS5.1.62
+remove BS5 BS5.1.63
+remove BS5 BS5.1.64
+set BS5 head BS5.1.N 
+set BS5 tail BS5.1.C 
+impose BS5 { 1 2 3 } { { "N" "CA" "C" "O" 0.0 } { "H" "N" "CA" "C"  0.0 } { "CA" "CB" "CC" "CD" 180 } { "CB" "CC" "CD" "CE" 180 } } 
+saveoff  BS5 BS5.lib 
+seq = sequence { ACE BS5 NME }
+savemol2 seq ACE-BS5-NME.mol2 1 
+loadoff /home/marie/GIT_Custom_residus_parametrization/001_Charge_deriv_knime_RDKIT_R.E.D/02_run_RESP_locally/ethyl.lib  
+seq = combine { ETH  seq } 
+bond seq.1.CY seq.3.CY 
+select seq.1 
+relax seq.1 
+select seq 
+relax seq
+savemol2 seq ACE-BS5-NME.mol2 1 
+quit

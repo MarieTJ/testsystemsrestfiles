@@ -1,0 +1,67 @@
+loadAmberParams parmchk2_all.frcmod  
+source leaprc.protein.ff14SB 
+BR1 = loadmol2 newcharges.mol2 
+remove BR1 BR1.1.1
+remove BR1 BR1.1.2
+remove BR1 BR1.1.9
+remove BR1 BR1.1.10
+remove BR1 BR1.1.11
+remove BR1 BR1.1.12
+remove BR1 BR1.1.13
+remove BR1 BR1.1.14
+remove BR1 BR1.1.15
+remove BR1 BR1.1.16
+remove BR1 BR1.1.17
+remove BR1 BR1.1.18
+remove BR1 BR1.1.19
+remove BR1 BR1.1.20
+remove BR1 BR1.1.21
+remove BR1 BR1.1.22
+remove BR1 BR1.1.23
+remove BR1 BR1.1.24
+remove BR1 BR1.1.26
+remove BR1 BR1.1.27
+remove BR1 BR1.1.28
+remove BR1 BR1.1.29
+remove BR1 BR1.1.30
+remove BR1 BR1.1.31
+remove BR1 BR1.1.32
+remove BR1 BR1.1.40
+remove BR1 BR1.1.41
+remove BR1 BR1.1.42
+remove BR1 BR1.1.43
+remove BR1 BR1.1.44
+remove BR1 BR1.1.45
+remove BR1 BR1.1.46
+remove BR1 BR1.1.47
+remove BR1 BR1.1.48
+remove BR1 BR1.1.49
+remove BR1 BR1.1.50
+remove BR1 BR1.1.51
+remove BR1 BR1.1.52
+remove BR1 BR1.1.53
+remove BR1 BR1.1.54
+remove BR1 BR1.1.55
+remove BR1 BR1.1.56
+remove BR1 BR1.1.57
+remove BR1 BR1.1.58
+remove BR1 BR1.1.59
+remove BR1 BR1.1.60
+remove BR1 BR1.1.62
+remove BR1 BR1.1.63
+remove BR1 BR1.1.64
+set BR1 head BR1.1.N 
+set BR1 tail BR1.1.C 
+impose BR1 { 1 2 3 } { { "N" "CA" "C" "O" 0.0 } { "H" "N" "CA" "C"  0.0 } { "CA" "CB" "CC" "CD" 180 } { "CB" "CC" "CD" "CE" 180 } } 
+saveoff  BR1 BR1.lib 
+seq = sequence { ACE BR1 NME }
+savemol2 seq ACE-BR1-NME.mol2 1 
+loadoff /home/marie/GIT_Custom_residus_parametrization/001_Charge_deriv_knime_RDKIT_R.E.D/02_run_RESP_locally/ethyl.lib  
+seq = combine { ETH  seq } 
+bond seq.1.CY seq.3.CY 
+select seq.1 
+relax seq.1 
+select seq 
+relax seq
+savemol2 seq ACE-BR1-NME.mol2 1 
+quit
